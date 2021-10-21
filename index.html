@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0020)https://www.json.cn/ -->
+<!-- saved from url=(0020)https://flyjson.github.io/ -->
 <html lang="zh-CN" class="os-windows screen-desktop-wide device-desktop">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,10 +13,10 @@
     <meta name="google-site-verification" content="CPogK9tQWL5XIDF9F9x_tJyy1HtpDI8Rv6owOEIkUvM">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all">
-    <meta name="author" content="json.cn">
+    <meta name="author" content="https://flyjson.github.io/">
     <meta content="json,json在线解析,json格式化,json格式验证,json转xml,xml转json,json压缩,json转义,js混淆加密,JSON转实体,json在线,JSON校验,json tools,主机评测,主机测评,新手教程,技术博客,电子工具"
           name="keywords">
-    <meta content="Json中文网致力于在中国推广Json,并提供相关的Json解析、验证、格式化、压缩、编辑器以及Json与XML相互转换等服务" name="description">
+    <meta content="致力于在中国推广Json,并提供相关的Json解析、验证、格式化、压缩、编辑器以及Json与XML相互转换等服务" name="description">
     <link href="./resources/zui.min.css" rel="stylesheet">
     <link href="./resources/font-awesome.min.css" rel="stylesheet">
     <link href="./resources/base.css" rel="stylesheet">
@@ -182,7 +182,7 @@
     <div class="row-fluid" style="padding: 0 20px">
         <!-- 导航模块-->
         <div class="header-nav-list first-nav comt-top-nva" style="position:relative;">
-            <a class="logo" href="https://www.json.cn/" style="font-size: 34px;padding: 0">
+            <a class="logo" style="font-size: 34px;padding: 0">
                 Json</a>
         </div>
 
@@ -356,7 +356,7 @@
             <input name="is_admin" type="hidden" value="0">
             <input name="is_tips" type="hidden" value="">
             <input name="csrf_test_name" type="hidden" value="6c3cec23237c6cf063228b64a78a6760">
-            <input name="back" id="dr_back" type="hidden" value="//www.json.cn/">
+            <input name="back" id="dr_back" type="hidden" value="">
             <div class="form-body" style="padding-bottom:0">
 
             <div class="form-group " id="dr_row_phone">
@@ -443,7 +443,7 @@
         <div class="portlet-body ">
             <div class="row">
                 <div class="col-img-wrapper">
-                    <img src="//www.json.cn/static/assets/oauth/login-main.png" alt="">
+                    <img src="" alt="">
                 </div>
                 <div class="col-info-wrapper">
                     <div class="login-chose-tit">
@@ -503,11 +503,7 @@
                                     <a class="find-password-btn" id="findPw"> 找回密码 </a>
                                 </p>
                             </div>
-                            <div class="login-commit">
-                                 <button type="button" name="logbtn"  onclick="dr_ajax_member_login('//www.json.cn/index.php?s=member&amp;c=login&amp;m=index&amp;back=%252Findex.php%253Fs%253Dmember', 'myform');" class="btn full-btn submit">
-                                    登录
-                                </button>
-                            </div>
+                            
 
                         </form>
                     </div>
@@ -573,24 +569,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">获得验证码</label>
-                                <div class="col-md-5">
-                                    <div class="input-group input-large">
-                                        <input type="text" id="findCode"  onkeydown="regLogFindSubmit(this)" name="data[code]" class="form-control find-code" placeholder="验证码">
-                                        <span class="input-group-btn find-pw-code">
-                                            <button id="activeCode" class="btn green " type="button" onclick="dr_ajax_url_find('//www.json.cn/index.php?s=member&amp;c=api&amp;m=find_code&amp;code='+$('#dr_code_find').val()+'&amp;value='+$('#dr_value').val())">发送验证码</button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-actions ">
-<!--                                <label class="col-md-4 control-label"></label>-->
-                                <div class="col-md-5 find-Subveri-box">
-                                    <button id="findSubveri" type="button" onclick="dr_ajax_submit_find('//www.json.cn/index.php?s=member&amp;c=login&amp;m=find', 'myform', '2000', '//www.json.cn/index.php?s=member&amp;c=login&amp;m=index')" class="btn blue subveri find-subveri"> 提交验证
-                                    </button>
-                                </div>
-                            </div>
+                            
                         </div>
                     </form>
                 </div>
@@ -1161,7 +1140,7 @@
         });
         $.ajax({
             type: "POST",
-            url: '//www.json.cn/user/get_show_qrcode',
+            url: '/user/get_show_qrcode',
             dataType: "json",
             success: function (json) {
                 layer.close(loading);
