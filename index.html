@@ -1,1 +1,1757 @@
-hello world!
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://www.json.cn/ -->
+<html lang="zh-CN" class="os-windows screen-desktop-wide device-desktop">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSON在线解析及格式化验证</title>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="720">
+    <meta http-equiv="Cache-Control" content="max-age=3600">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="baidu-site-verification" content="mlJsiTNxiD">
+    <meta name="google-site-verification" content="CPogK9tQWL5XIDF9F9x_tJyy1HtpDI8Rv6owOEIkUvM">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all">
+    <meta name="author" content="json.cn">
+    <meta content="json,json在线解析,json格式化,json格式验证,json转xml,xml转json,json压缩,json转义,js混淆加密,JSON转实体,json在线,JSON校验,json tools,主机评测,主机测评,新手教程,技术博客,电子工具"
+          name="keywords">
+    <meta content="Json中文网致力于在中国推广Json,并提供相关的Json解析、验证、格式化、压缩、编辑器以及Json与XML相互转换等服务" name="description">
+    <link href="./resources/zui.min.css" rel="stylesheet">
+    <link href="./resources/font-awesome.min.css" rel="stylesheet">
+    <link href="./resources/base.css" rel="stylesheet">
+    <link href="./resources/new-style.css" rel="stylesheet">
+    <link href="./resources/new-style2.css" rel="stylesheet">
+    <link href="./resources/header.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicons -->
+    <style>
+        .tip-mask {
+            position: fixed;
+            background-color: rgba(255, 255, 255, .5);
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+        }
+
+        .old-version-tip {
+            z-index: 99999;
+            position: relative;
+        }
+
+        .old-version-tip:after {
+            position: absolute;
+            width: 113px;
+            height: 100px;
+            content: '';
+            right: -10px;
+            top: -10px;
+            background-image: url("/static/202010/img/click-this.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .old-version span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .xf-window {
+            display: none;
+        }
+
+
+        .form-control.focus, .form-control:focus {
+            border-color: #145ccd;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            #right-box {
+                padding-top: 90px !important;
+            }
+        }
+
+        .editor-full-screen {
+            width: 100% !important;
+            height: 100% !important;
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: #fff;
+        }
+
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        #right-box {
+            border-top: 0 !important;
+        }
+    </style>
+    <style>
+        .modal-overflow-unset {
+            overflow: unset !important;
+        }
+    </style>
+    <style type="text/css">.json_key {
+        color: #92278f;
+        font-weight: bold;
+    }
+
+    .json_null {
+        color: #f1592a;
+        font-weight: bold;
+    }
+
+    .json_string {
+        color: #3ab54a;
+        font-weight: bold;
+    }
+
+    .json_number {
+        color: #25aae2;
+        font-weight: bold;
+    }
+
+    .json_boolean {
+        color: #f98280;
+        font-weight: bold;
+    }
+
+    .json_link {
+        color: #61D2D6;
+        font-weight: bold;
+    }
+
+    .json_array_brackets {
+    }</style>
+    <script type="text/javascript" src="./resources/layer.js"></script>
+    <link rel="stylesheet" type="text/css" href="./resources/layer.css">
+    <script type="text/javascript" src="./resources/lang.js"></script>
+    <link rel="stylesheet" href="./resources/layer(1).css" id="layuicss-layer">
+    <link rel="stylesheet" href="resources/base.css">
+</head>
+<body class="bg-color-f7 modal-overflow-unset">
+<style>
+    .myNotice {
+        display: inline-block;
+    }
+
+    .hasNotice {
+        position: relative;
+    }
+
+    .myNotice.hasNotice:after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background-color: red;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    a.hasNotice:after {
+        left: 10px;
+        top: 50% !important;
+        margin-top: -4px;
+    }
+</style>
+
+<header class="header">
+    <div class="row-fluid" style="padding: 0 20px">
+        <!-- 导航模块-->
+        <div class="header-nav-list first-nav comt-top-nva" style="position:relative;">
+            <a class="logo" href="https://www.json.cn/" style="font-size: 34px;padding: 0">
+                Json</a>
+        </div>
+
+        <br style="clear:both;">
+    </div>
+</header>
+
+
+<!--用于插入多个消息框的节点-->
+<div id="messageAlert"></div>
+
+<main class="row-fluid editor-con"
+      style="font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆 !important; position: relative;">
+    <div class="col-md-5 col-xs-5" style="padding: 0px; height: 100%; position: relative; z-index: 10;">
+        <div class="numberedtextarea-wrapper "><textarea id="json-src" placeholder="在此输入json字符串或XML字符串..."
+                                                         class="form-control common-font-size" style="height:100%;padding:10px 10px 10px 30px;border:0;border-radius:0;resize: none;
+                  outline:none;border: 1px solid #eee"></textarea>
+            <div class="numberedtextarea-line-numbers"
+                 style="padding-top: 10px; line-height: 18.7556px; font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; width: 30px;">
+                <div class="numberedtextarea-number numberedtextarea-number-1" style="margin-bottom: 10px;">1</div>
+            </div>
+        </div>
+    </div>
+    <div id="dragEle" style="position: absolute; cursor: move;"></div>
+    <div class="col-md-7 col-xs-7" style="padding: 0px; position: relative; height: 100%;">
+        <div class="tool" style="position:absolute;border-top: 1px solid #eee;border-right: 1px solid #eee">
+            <a href="#" class="tip zip" title="" data-placement="bottom" data-original-title="压缩" style="color:#999;"><i
+                    class="fa fa-database"></i></a>
+            <a href="#" class="tip xml" title="" data-placement="bottom" data-original-title="转XML" style="color:#999;"><i
+                    class="fa fa-file-excel-o"></i></a>
+            <a href="#" class="tip shown" title="" data-placement="bottom" data-original-title="显示行号"><i
+                    class="fa fa-sort-amount-asc"></i></a>
+            <a href="#" class="tip clear" title="" data-placement="bottom" data-original-title="清空"><i
+                    class="fa fa-trash"></i></a>
+            <a href="#" class="tip save" title="" data-placement="bottom" data-original-title="保存"><i
+                    class="fa fa-download"></i></a>
+            <a href="#" class="tip copy" title="" data-clipboard-target="#json-target" data-placement="bottom"
+               data-original-title="复制"><i class="fa fa-copy"></i></a>
+
+            <a href="#" class="tip compress" title="" data-placement="bottom" data-original-title="折叠"><i
+                    class="fa fa-compress"></i></a>
+            <a href="#" class="tip fullScreen" title="" data-placement="bottom" data-original-title="全屏"><i
+                    class="fa fa-arrows-alt"></i></a>
+            <label style="cursor: pointer">
+                <input type="checkbox" checked="checked" name="cancelZY" id="cancelZY"
+                       style="margin-top: 0;position: relative;top: 2px">
+                保留转义
+            </label>
+            <ul style="margin: 0 0 0 0;display: inline-block;vertical-align: middle;list-style: none;">
+                <li>
+
+
+                </li>
+            </ul>
+        </div>
+        <div style="position: absolute;top: 0;left: 0;background: #fff;height: 60px; width: 100%;z-index: 0;"></div>
+        <div id="right-box" class="common-font-size bg-color-ff"
+             style="width:100%;height:calc(100% - 60px);border:solid 1px #eee;border-radius:0;resize: none;overflow-y:scroll; outline:none;position:relative;top:60px;">
+            <p class="editor-tip">可点击key和value值进行编辑</p>
+            <div id="hidden-message-box" class="alert alert-danger alert-dismissible" role="alert"
+                 style="display:none;margin-bottom:0;padding:10px 2vw;font-size: calc(var(--target) + 4px);">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">×</span>
+                </button>
+                <p><i class="fa fa-bell" aria-hidden="true"></i>
+                    提示：
+                    <span id="hidden-message">
+                      默认警告
+                  </span>
+
+                </p>
+            </div>
+            <div id="line-num"
+                 style="background-color:#fafafa;padding:0px 8px;float:left;border-right:dashed 1px #E5EBEE;display:none;color:#999;position:absolute;text-align:center;over-flow:hidden;">
+                <div>1
+                    <div>
+                        <div>2
+                            <div>
+                                <div>3
+                                    <div>
+                                        <div>4
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ro" id="json-target" style="padding:0px 32px;white-space: pre-line;word-wrap:break-word;"><span
+                    data-type="object"><i style="cursor:pointer;" class="fa fa-minus-square-o" onclick="hide(this)"></i>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    class="json_key" contenteditable="true">"aa"</span>:<span class="json_string"
+                                                                              contenteditable="true">"aa"</span><br>}</span>
+            </div>
+        </div>
+    </div>
+    <br style="clear:both;">
+
+
+</main>
+<script data-ad-client="ca-pub-0888257628527075" async=""
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<footer class="relative b-large-margin">
+    <div class="container">
+        <div class="footer-gg-b">
+            <div class="footer-gg-b-addr">
+                <div class="footer-gg-b-addr-img">
+                    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- json底部 -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px"
+                         data-ad-client="ca-pub-0888257628527075" data-ad-slot="6525978731"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+            <div class="footer-nav-list width-out">
+                <div class="title">友情链接：</div>
+                <dd>
+                    <a href="https://www.ip138.com/" target="_blank">ip查询</a>
+                </dd>
+            </div>
+        </div>
+    </div>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1d6c34c1bc067f5746a5fca18d1c24ab";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</footer>
+
+
+<script src="./resources/lang.js"></script>
+<script>
+
+    var timerLogin;
+
+    var regTc, logTc, findTc;
+
+    var notify_url;
+
+    regTc = function () {
+        layer.open({
+            type: 1,
+            closeBtn: false,
+            title: false,
+            shade: true,
+            shadeClose: true,
+            scrollbar: true,
+            area: ['750px', '480px'],
+            // area: '750px',
+            content: `
+
+                 <div class="login-reg-box-wrapper tc-cover">
+
+                <div class="fc-register portlet-title tabbable-line">
+                     <a class="return-to-log left-icon-self" id="regToLog">
+                    返回登录</a>
+                     注册用户
+                </div>
+                <div class="portlet light">
+
+            <div class="portlet-body">
+            <form action="" class="form-horizontal form myRegForm" method="post" name="myregform" id="myform">
+            <input name="is_form" type="hidden" value="1">
+            <input name="is_admin" type="hidden" value="0">
+            <input name="is_tips" type="hidden" value="">
+            <input name="csrf_test_name" type="hidden" value="6c3cec23237c6cf063228b64a78a6760">
+            <input name="back" id="dr_back" type="hidden" value="//www.json.cn/">
+            <div class="form-body" style="padding-bottom:0">
+
+            <div class="form-group " id="dr_row_phone">
+            <label class="col-md-2 control-label">手机号</label>
+            <div class="col-md-9">
+            <input type="text" class="form-control input-large" placeholder="请输入手机号" name="data[phone]" id="dr_phone">
+            </div>
+            </div>
+            <div class="form-group " id="dr_row_password">
+            <label class="col-md-2 control-label">密码</label>
+            <div class="col-md-9">
+            <input type="password" class="form-control input-large" name="data[password]" placeholder="数字+字母不少于8位" id="dr_password">
+            </div>
+            </div>
+            <div class="form-group " id="dr_row_password2">
+            <label class="col-md-2 control-label">确认密码</label>
+            <div class="col-md-9">
+            <input type="password" class="form-control input-large" name="data[password2]" placeholder="再次输入密码" id="dr_password2">
+            </div>
+            </div>
+            <div class="form-group" id="dr_row_code">
+            <label class="col-md-2 control-label">验证码</label>
+            <div class="col-md-9 input-ver-code" style="padding-left: 10px;padding-right: 0;">
+            <input class="form-control placeholder-no-fix input-ver" type="text" autocomplete="off" id="dr_code" name="code" placeholder="验证码">
+            <div class="input-group-btn fc-code">
+            <img align="absmiddle" style="cursor:pointer;" onclick="this.src='/index.php?s=api&c=api&m=captcha&width=120&height=35&'+Math.random();"
+            src="/index.php?s=api&c=api&m=captcha&width=120&height=35">
+            </div>
+            </div>
+            </div>
+            <div class="form-group" id="dr_row_sms">
+            <label class="col-md-2 sms-ver-tit control-label">短信验证</label>
+            <div class="sms-ver-show col-md-9" style="padding-left: 10px;padding-right: 0;">
+            <input class="form-control placeholder-no-fix sms-veri" onkeydown="regLogFindSubmit(this)" type="text" autocomplete="off" id="dr_sms" name="sms" placeholder="手机验证码">
+            <button id="activeCode" class="empty-btn reg-btn reg-active-code-box" onclick="dr_ajax_url_login('/index.php?s=member&c=api&m=register_code&id='+$('#dr_phone').val()+'&code='+$('#dr_code').val())"
+            type="button">获取手机验证码
+            </button>
+
+            </div>
+            </div>
+            <div class="reg-agree ">
+            <label class="mt-checkbox mt-checkbox-outline">
+            <input type="checkbox" name="is_protocol" id="dr_protocol" value="1" checked=""> 我已阅读并同意
+            <span></span>
+            </label>
+            <label class="mt-checkbox-more">
+            <a href="javascript:dr_show_protocol();">《用户注册协议》</a>
+            </label>
+            </div>
+            <div class="form-actions">
+            <label class="member-reg-btn-label">
+            <button type="button" id="regInBtn" class="btn red" onclick="dr_ajax_member_reg('/index.php?s=member&c=register&m=index','myform')"> 立即注册
+
+            </button>
+            </label>
+            </div>
+            </div>
+            </form>
+
+            </div>
+            </div>
+            </div>
+            `
+        })
+    }
+    logTc = function () {
+        layer.open({
+            type: 1,
+            closeBtn: false,
+            title: false,
+            shade: true,
+            shadeClose: true,
+            scrollbar: true,
+            // area: ['750px', '480px'],
+            end: function () {
+                if (timerLogin) {
+                    clearInterval(timerLogin)
+                }
+            },
+            area: '750px',
+            content: `
+                        <div class="login-log-box-wrapper account-login-method portlet-wrapper">
+    <div class="portlet light">
+        <div class="portlet-body ">
+            <div class="row">
+                <div class="col-img-wrapper">
+                    <img src="//www.json.cn/static/assets/oauth/login-main.png" alt="">
+                </div>
+                <div class="col-info-wrapper">
+                    <div class="login-chose-tit">
+                        <div class="login-title active">微信登录</div>
+                        <div class="login-title">账号登录</div>
+                    </div>
+
+                    <div id="loginStepTwo" class="col-md-4 " >
+                        <div class="login-by-code">
+                            <div class="login-by-code-img">
+                               <div class="login-by-code-img">
+                                <img id="wcQrCodeImg" src="" alt="">
+
+                                    <div class="login-by-code-img-noshow">
+                                        <p>二维码失效</p>
+                                        <p>请点击刷新</p>
+                                        <a id="reloadQrcode" onclick="refreshQrcode()" >刷新二维码</a>
+                                    </div>
+                                </div>
+                            </div>
+                             <a class="refresh-qrcode" onclick="refreshQrcode()">点击刷新</a>
+                            <p class="">请使用微信扫描二维码登录注册</p>
+                        </div>
+                    </div>
+                    <div id="loginStepOne" class="col-md-4 display-none">
+                        <form class="content" id="myform" name="mylogform" method="post" novalidate="novalidate">
+
+
+                            <input name="is_form" type="hidden" value="1">
+<input name="is_admin" type="hidden" value="0">
+<input name="is_tips" type="hidden" value="">
+<input name="csrf_test_name" type="hidden" value="e61cf3d516c228e64a9afb533342635f">
+<input name="back" id="dr_back" type="hidden" value="/index.php?s=member">
+                            <div class="form-group" style="margin-top: 20px;">
+                                <div class="input-icon">
+                                     <input class="form-control placeholder-no-fix login-tel" type="text" autocomplete="off" id="logUsername" placeholder="请输入用户名\\手机号" name="data[username]">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-icon">
+                                     <input class="form-control placeholder-no-fix login-pw" type="password" autocomplete="off" id="logPassword" placeholder="请输入密码" name="data[password]">
+                                </div>
+                            </div>
+
+                                                        <div class="form-group">
+                                <div class="input-group " style="width: 100%">
+                                    <div class="input-icon" style="width:calc(100% - 15px)">
+                                         <input onkeydown="regLogFindSubmit(this)" class="form-control placeholder-no-fix veri-code" type="text" autocomplete="off" id="logCode" placeholder="请输入验证码" name="code">
+                                    </div>
+                                    <div class="input-group-btn fc-code" style="width: 120px;border: 1px solid #ddd">
+                                        <img align="absmiddle" style="cursor:pointer;" onclick="this.src='/index.php?s=api&amp;c=api&amp;m=captcha&amp;width=120&amp;height=35&amp;'+Math.random();" src="/index.php?s=api&amp;c=api&amp;m=captcha&amp;width=120&amp;height=35">                                    </div>
+                                </div>
+                            </div>
+                                         <div class="create-account create-account-one" style="margin: 0;display: flex;justify-content: space-between">
+                                <p>
+                                    <a  class="reg-account"> 注册账号 </a>
+                                    <a class="find-password-btn" id="findPw"> 找回密码 </a>
+                                </p>
+                            </div>
+                            <div class="login-commit">
+                                 <button type="button" name="logbtn"  onclick="dr_ajax_member_login('//www.json.cn/index.php?s=member&amp;c=login&amp;m=index&amp;back=%252Findex.php%253Fs%253Dmember', 'myform');" class="btn full-btn submit">
+                                    登录
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                       `
+        })
+    }
+    findTc = function () {
+        layer.open({
+            type: 1,
+            closeBtn: false,
+            title: false,
+            shade: true,
+            shadeClose: true,
+            scrollbar: true,
+            // area:['750px','auto'],
+            area: ['750px', '480px'],
+            content: `
+                         <div class="portlet-wrapper">
+    <div class="portlet light find-pw-cla">
+        <div class="portlet-body ">
+            <div class="row">
+                <div class="find-pw-tit">
+                     <a class="find-to-log left-icon-self" id="returnToLogin">返回登录</a>
+                    找回密码
+</div>
+                <div class="portlet-body form" style="">
+                    <form id="myform" name="myfindform" class="form-horizontal" role="form">
+                        <input name="is_form" type="hidden" value="1">
+<input name="is_admin" type="hidden" value="0">
+<input name="is_tips" type="hidden" value="">
+<input name="csrf_test_name" type="hidden" value="623f272b236490d99c136438587e15a2">
+                        <div class="form-body">
+                            <div class="form-group" id="dr_row_value">
+                                <label class="col-md-4 control-label">手机号</label>
+                                <div class="col-md-5">
+                                    <label><input type="text" class="form-control input-large" id="dr_value" name="data[value]" placeholder="输入手机号"></label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="dr_row_password">
+                                <label class="col-md-4 control-label">新密码</label>
+                                <div class="col-md-5">
+                                    <label><input type="password" class="form-control input-large" id="dr_password_find" name="data[password]" placeholder="输入新的密码"></label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="dr_row_password2">
+                                <label class="col-md-4 control-label">确认密码</label>
+                                <div class="col-md-5">
+                                    <label><input type="password" class="form-control input-large" id="dr_password_find2" name="data[password2]" placeholder="再次输入新的密码"></label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="dr_row_code">
+                                <label class="col-md-4 control-label">图片验证码</label>
+                                <div class="col-md-5">
+                                    <div class="input-group input-large">
+                                        <input class="form-control placeholder-no-fix  find-veri-code" type="text" autocomplete="off" id="dr_code_find" placeholder="图片验证码">
+                                        <div class="input-group-btn fc-code">
+                                            <img align="absmiddle" style="cursor:pointer;" onclick="this.src='/index.php?s=api&amp;c=api&amp;m=captcha&amp;width=120&amp;height=35&amp;'+Math.random();" src="/index.php?s=api&amp;c=api&amp;m=captcha&amp;width=120&amp;height=35">                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">获得验证码</label>
+                                <div class="col-md-5">
+                                    <div class="input-group input-large">
+                                        <input type="text" id="findCode"  onkeydown="regLogFindSubmit(this)" name="data[code]" class="form-control find-code" placeholder="验证码">
+                                        <span class="input-group-btn find-pw-code">
+                                            <button id="activeCode" class="btn green " type="button" onclick="dr_ajax_url_find('//www.json.cn/index.php?s=member&amp;c=api&amp;m=find_code&amp;code='+$('#dr_code_find').val()+'&amp;value='+$('#dr_value').val())">发送验证码</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions ">
+<!--                                <label class="col-md-4 control-label"></label>-->
+                                <div class="col-md-5 find-Subveri-box">
+                                    <button id="findSubveri" type="button" onclick="dr_ajax_submit_find('//www.json.cn/index.php?s=member&amp;c=login&amp;m=find', 'myform', '2000', '//www.json.cn/index.php?s=member&amp;c=login&amp;m=index')" class="btn blue subveri find-subveri"> 提交验证
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+                       `
+        })
+    }
+
+    window.onload = function () {
+
+
+        /*reg*/
+        $('body').on('click', '#lgrt', function () {
+            regTc()
+        })
+
+        /*login*/
+        $('body').on('click', '#lggt', function () {
+            logTc();
+            $('#reloadQrcode').click();
+            timerLogin = setInterval('dr_wx_notify()', 1000);
+        })
+
+        /*find password*/
+        $('body').on('click', '.find-password-btn', function () {
+            layer.closeAll();
+            findTc()
+        })
+
+        $('body').on('click', '.reg-account', function () {
+            layer.closeAll();
+            regTc()
+        })
+
+        $('body').on('click', '.login-title', function () {
+            if (timerLogin) {
+                clearInterval(timerLogin);
+            }
+            $('.login-title').removeClass('active');
+            $(this).addClass('active');
+            $('.col-md-4').hide();
+            $('.col-md-4').eq($(this).index()).show()
+
+            if ($('#loginStepTwo').is(':visible')) {
+                timerLogin = setInterval('dr_wx_notify()', 1000);
+            } else {
+                clearInterval(timerLogin);
+            }
+        })
+
+
+        $('body').on('click', '#returnToLogin', function () {
+            layer.closeAll();
+            logTc()
+            $('#loginStepTwo').addClass('display-none')
+            $('#loginStepOne ').removeClass('display-none')
+            $('.login-title').removeClass('active')
+            $('.login-title').eq(1).addClass('active')
+
+        })
+
+        $('body').on('click', '#regToLog', function () {
+            layer.closeAll();
+            logTc()
+            $('#loginStepTwo').addClass('display-none')
+            $('#loginStepOne ').removeClass('display-none')
+            $('.login-title').removeClass('active')
+            $('.login-title').eq(1).addClass('active')
+        })
+    }
+
+    function regLogFindSubmit(iv) {
+        if (event.keyCode == 13) {
+            if ($(".veri-code") && true == $(".veri-code").is(":focus")) {
+                document.mylogform.logbtn.click();
+                return;
+            }
+
+            if ($('input[name="data[code]"]') && true == $('input[name="data[code]"]').is(":focus")) {
+                $('#findSubveri').click();
+                return;
+            }
+
+            if ($(".sms-veri") && $(".sms-veri").is(":focus") == true) {
+                $('#regInBtn').click();
+                return;
+            }
+        }
+    }
+
+    function dr_ajax_member_reg(url, form) {
+        // var url = window.location.href || url;
+        var reg = /^(?![^a-zA-Z]+$)(?!\\D+$)[a-zA-Z0-9]{8,}$/;
+        if (!$('#myform #dr_phone').val()) {
+            layer.msg('手机号不能为空');
+            return;
+        }
+        if (!$('#myform #dr_password').val()) {
+            layer.msg('密码不能为空');
+            return;
+        }
+        if ($('#myform #dr_password').val().search(reg) === -1) {
+            layer.msg('密码数字+字母不少于8位');
+            return;
+        }
+        if (!$('#myform #dr_password2').val()) {
+            layer.msg('确认密码不能为空');
+            return;
+        }
+        if ($('#myform #dr_password2').val() !== $('#myform #dr_password').val()) {
+            layer.msg('密码和确认密码不一致');
+            return;
+        }
+        if (!$('#dr_code').val()) {
+            layer.msg('验证码不能为空');
+            return;
+        }
+        if (!$('#dr_sms').val()) {
+            layer.msg('短信验证码不能为空');
+            return;
+        }
+        var flen = $('[id=' + form + ']').length;
+        // 验证id是否存在
+        if (flen == 0) {
+            dr_cmf_tips(0, lang['unformid'] + ' (' + form + ')');
+            return;
+        }
+        // 验证重复
+        if (flen > 1) {
+            dr_cmf_tips(0, lang['repeatformid'] + ' (' + form + ')');
+            return;
+        }
+
+        var loading = layer.load(1, {
+            shade: [0.9, '#000000'], //0.1透明度的白色背景
+            time: 100000000
+        });
+
+        $("#" + form + ' .form-group').removeClass('has-error');
+
+        var regData = {
+            'data[phone]': $('#dr_phone').val(),
+            'data[password]': $('#dr_password').val(),
+            'data[password2]': $('#dr_password2').val(),
+            'code': $('#dr_code').val(),
+            'sms': $('#dr_sms').val(),
+            'is_protocol': $('#dr_protocol').val(),
+            'csrf_test_name': "e7866e97ab61912cc76791ee0d7bc7e4",
+        };
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: url,
+            data: regData,
+            success: function (json) {
+                layer.close(loading);
+                if (json.code == 1) {
+                    layer.closeAll();
+                    layer.msg('注册成功');
+                    loginCookie(json.data.member.avatar, json.data.member.name ? json.data.member.name : json.data.member.phone);
+                } else {
+                    dr_cmf_tips(0, json.msg, json.data.time);
+                    $('.fc-code img').click();
+                    if (json.data.field) {
+                        $('#dr_row_' + json.data.field).addClass('has-error');
+                        $('#dr_' + json.data.field).focus();
+                    }
+                }
+            },
+            error: function (HttpRequest, ajaxOptions, thrownError) {
+                dr_ajax_alert_error(HttpRequest, ajaxOptions, thrownError);
+            }
+        });
+    }
+
+    // 注册阅读网站协议
+    function dr_show_protocol() {
+        layer.open({
+            type: 2,
+            title: lang['protocol'],
+            shadeClose: true,
+            area: ['70%', '70%'],
+            content: '/index.php?s=member&c=api&m=protocol'
+        });
+    }
+
+
+    function dr_wx_notify() {
+        if (notify_url) {
+            $.ajax({
+                type: "post",
+                url: notify_url,
+                dataType: "json",
+                success: function (json) {
+                    if (json.code == 1) {
+                        console.log(4)
+                        loginCookie(json.data.avatar, json.data.username ? json.data.username : json.data.nickname);
+                        var oss_url = json.data.sso;
+                        // 发送同步登录信息
+                        for (var i in oss_url) {
+                            $.ajax({
+                                type: "GET",
+                                url: oss_url[i],
+                                dataType: "jsonp",
+                                success: function (json) {
+                                },
+                                error: function () {
+                                }
+                            });
+                        }
+                        if (json.data.url) {
+                            //setTimeout("window.location.href = '" + json.data.url + "'", 1000);
+
+                            layer.closeAll();
+                            layer.msg('登录成功');
+                            loginCookie(json.data.avatar, json.data.nickname ? json.data.nickname : json.data.phone);
+                            // window.location.reload();
+                        } else {
+                            //setTimeout("window.location.href ='/index.php?s=member'", 1000);
+
+
+                            layer.closeAll();
+                            layer.msg('登录成功');
+                            loginCookie(json.data.avatar, json.data.nickname ? json.data.nickname : json.data.phone);
+                        }
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+
+    }
+
+    function dr_ajax_member_login(url, form) {
+
+        if (!$('.login-tel').val()) {
+            layer.msg('手机号/密码不能为空');
+            return;
+        }
+        if (!$('.login-pw').val()) {
+            layer.msg('密码不能为空');
+            return;
+        }
+        if (!$('.veri-code').val()) {
+            layer.msg('验证码不能为空');
+            return;
+        }
+
+        var flen = $('[id=' + form + ']').length;
+        // 验证id是否存在
+        if (flen == 0) {
+            dr_cmf_tips(0, lang['unformid'] + ' (' + form + ')');
+            return;
+        }
+        // 验证重复
+        if (flen > 1) {
+            dr_cmf_tips(0, lang['repeatformid'] + ' (' + form + ')');
+            return;
+        }
+
+        var loading = layer.load(1, {
+            shade: [0.9, '#000000'], //0.1透明度的白色背景
+            time: 100000000
+        });
+
+
+        $("#" + form + ' .form-group').removeClass('has-error');
+
+        var logData = {
+            'data[username]': $('#logUsername').val(),
+            'data[password]': $('#logPassword').val(),
+            'code': $('#logCode').val(),
+            'csrf_test_name': "e7866e97ab61912cc76791ee0d7bc7e4",
+        };
+
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: url,
+            // data: $("#"+form).serialize(),
+            data: logData,
+            success: function (json) {
+                layer.close(loading);
+                if (json.code == 1) {
+                    var oss_url = json.data.sso;
+                    // 发送同步登录信息
+                    for (var i = 0; i < oss_url.length; i++) {
+                        //alert(oss_url[i]);
+                        $.ajax({
+                            type: "GET",
+                            url: oss_url[i],
+                            dataType: "jsonp",
+                            success: function (json) {
+                            },
+                            error: function (HttpRequest, ajaxOptions, thrownError) {
+                            }
+                        });
+                    }
+                    layer.closeAll();
+                    layer.msg('登录成功');
+                    loginCookie(json.data.member.avatar, json.data.member.name ? json.data.member.name : json.data.member.phone)
+                } else {
+                    dr_cmf_tips(0, json.msg, json.data.time);
+                    $('.fc-code img').click();
+                    if (json.data.field) {
+                        $('#dr_row_' + json.data.field).addClass('has-error');
+                        $('#dr_' + json.data.field).focus();
+                    }
+                }
+            },
+            error: function (HttpRequest, ajaxOptions, thrownError) {
+
+                /*出现系统错误，可能是已登录，判断是否已登录 */
+                $.post('/index.php?s=api&app=blog&c=tran&m=get_user_status', {}, function (data) {
+                    if (data.code == 1) {
+                        var avatar = data.avatar ? data.avatar : '/static/img/avatar.png';
+                        var username = data.username ? data.username : '用户名';
+                        $.cookie('json-login-status', '1', {expires: 1, path: '/'});
+                        $.cookie('json-login-avatar', avatar, {expires: 1, path: '/'}); //exprires 过期时间 path ;域名路径下都可获取
+                        $.cookie('json-login-username', username, {expires: 1, path: '/'});
+                        $('#login_no').hide();
+                        $('#login_yes').show().find('.img-box').find('img').attr('src', avatar);
+                        $('#login_yes').show().find('.user-name').text(username);
+                        layer.closeAll();
+                        return false;
+                    } else {
+                        $.cookie('json-login-status', null, {path: '/'});
+                        $.cookie('json-login-avatar', null, {path: '/'});
+                        $.cookie('json-login-username', null, {path: '/'});
+                        layer.msg('错误');
+                    }
+                }, 'json');
+
+                // dr_ajax_alert_error(HttpRequest, ajaxOptions, thrownError)
+            }
+        });
+    }
+
+    function dr_ajax_url_find(url) {
+        var index = layer.load(2, {
+            shade: [0.5, '#fff'], //0.1透明度的白色背景
+            time: 100000000
+        });
+
+        var pass = checkPwRule('#dr_password_find');
+
+        if (!pass) {
+            layer.msg('数字+字母不少于8位');
+            layer.close(index);
+            return;
+        }
+        var pass2 = $('#dr_password_find').val() == $('#dr_password_find2').val();
+        if (!pass2) {
+            layer.msg('再次输入密码不一致')
+            layer.close(index);
+            return;
+        }
+
+
+        if (pass && pass2) {
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json",
+                success: function (json) {
+                    layer.close(index);
+                    if (json.code == 0) {
+                        $('.fc-code img').click();
+                        if (json.data.field) {
+                            $('#dr_row_' + json.data.field).addClass('has-error');
+                            $('#dr_' + json.data.field).focus();
+                        }
+                    } else {
+                        sendActiveCode('#activeCode');
+                        $('input[name="data[code]"]').focus();
+                    }
+                    dr_cmf_tips(json.code, json.msg);
+                    if (json.data.url) {
+                        setTimeout("window.location.href = '" + json.data.url + "'", 2000);
+                    }
+                },
+                error: function (HttpRequest, ajaxOptions, thrownError) {
+                    dr_ajax_alert_error(HttpRequest, ajaxOptions, thrownError)
+                }
+            });
+        }
+
+    }
+
+    function dr_ajax_submit_find(url, form, time, go) {
+        var reg = /^(?![^a-zA-Z]+$)(?!\\D+$)[a-zA-Z0-9]{8,}$/;
+        if (!$('#dr_value').val()) {
+            layer.msg('手机号不能为空');
+            return;
+        }
+        if (!$('#dr_password_find').val()) {
+            layer.msg('密码不能为空');
+            return;
+        }
+        if ($('#dr_password_find').val().search(reg) === -1) {
+            layer.msg('密码为数字+字母且不少于8位');
+            return;
+        }
+        if (!$('#dr_password_find2').val()) {
+            layer.msg('确认密码不能为空');
+            return;
+        }
+        if ($('#dr_password_find').val() !== $('#dr_password_find2').val()) {
+            layer.msg('密码不一致');
+            return;
+        }
+
+        if (!$('#dr_code_find').val()) {
+            layer.msg('图文验证码不能为空');
+            return;
+        }
+        if (!$('input[name="data[code]"]').val()) {
+            layer.msg('手机验证码不能为空');
+            return;
+        }
+
+        var flen = $('[id=' + form + ']').length;
+        // 验证id是否存在
+        if (flen == 0) {
+            dr_cmf_tips(0, lang['unformid'] + ' (' + form + ')');
+            return;
+        }
+        // 验证重复
+        if (flen > 1) {
+            dr_cmf_tips(0, lang['repeatformid'] + ' (' + form + ')');
+            return;
+        }
+
+        // 验证必填项管理员
+        var tips_obj = $('#' + form).find('[name=is_tips]');
+        if (tips_obj.val() == 'required') {
+            tips_obj.val('');
+        }
+        if ($('#' + form).find('[name=is_admin]').val() == 1) {
+            $('#' + form).find('.dr_required').each(function () {
+                if (!$(this).val()) {
+                    tips_obj.val('required');
+                }
+            });
+        }
+
+        var tips = tips_obj.val();
+        if (tips) {
+            if (tips == 'required') {
+                tips = '有必填字段未填写，确认提交吗？';
+            }
+            layer.confirm(
+                tips,
+                {
+                    icon: 3,
+                    shade: 0,
+                    title: lang['ts'],
+                    btn: [lang['ok'], lang['esc']]
+                }, function (index) {
+                    dr_post_submit_log(url, form, time, go);
+                });
+        } else {
+            dr_post_submit_log(url, form, time, go);
+        }
+    }
+
+    function dr_post_submit_log(url, form, time, go) {
+
+        url = url.replace(/&page=\d+&page/g, '&page');
+
+        var loading = layer.load(1, {
+            shade: [0.9, '#000000'], //0.1透明度的白色背景
+            time: 100000000
+        });
+
+        $("#" + form + ' .form-group').removeClass('has-error');
+
+        $('.dr_ueditor').each(function () {
+            var uev = $(this).attr('id');
+            if (UE.getEditor(uev).queryCommandState('source') != 0) {
+                UE.getEditor(uev).execCommand('source');
+            }
+        });
+
+        var findData = {
+            'data[value]': $('#dr_value').val(),
+            'data[password]': $('#dr_password_find').val(),
+            'data[password2]': $('#dr_password_find2').val(),
+            'data[code]': $('#findCode').val(),
+            'csrf_test_name': "e7866e97ab61912cc76791ee0d7bc7e4",
+        };
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: url,
+            data: findData,
+            success: function (json) {
+                layer.close(loading);
+                if (json.code) {
+                    dr_cmf_tips(1, json.msg, json.data.time);
+                    if (json.data.htmlfile) {
+                        // 执行生成htmljs
+                        $.ajax({
+                            type: "GET",
+                            url: json.data.htmlfile,
+                            dataType: "jsonp",
+                            success: function (json) {
+                            },
+                            error: function () {
+                            }
+                        });
+                    }
+                    if (json.data.htmllist) {
+                        // 执行生成htmljs
+                        $.ajax({
+                            type: "GET",
+                            url: json.data.htmllist,
+                            dataType: "jsonp",
+                            success: function (json) {
+                            },
+                            error: function () {
+                            }
+                        });
+                    }
+                    if (time) {
+                        // var gourl = url;
+                        // if (go != '' && go != undefined && go != 'undefined') {
+                        //     gourl = go;
+                        // } else if (json.data.url) {
+                        //     gourl = json.data.url;
+                        // }
+                        // setTimeout("window.location.href = '" + gourl + "'", time);
+
+                        layer.closeAll();
+                        logTc()
+                        $('#loginStepTwo').addClass('display-none');
+                        $('#loginStepOne ').removeClass('display-none');
+                        $('.login-title').removeClass('active');
+                        $('.login-title').eq(1).addClass('active');
+                        layer.msg('密码修改成功，请重新登录');
+                    }
+                } else {
+                    dr_cmf_tips(0, json.msg, json.data.time);
+                    $('.fc-code img').click();
+                    if (json.data.field) {
+                        $('#dr_row_' + json.data.field).addClass('has-error');
+                        $('#dr_' + json.data.field).focus();
+                    }
+                }
+            },
+            error: function (HttpRequest, ajaxOptions, thrownError) {
+                dr_ajax_alert_error(HttpRequest, ajaxOptions, thrownError)
+            }
+        });
+    }
+
+
+    function refreshQrcode() {
+        var loading = layer.load(1, {
+            shade: [0.9, '#000000'], //0.1透明度的白色背景
+            time: 100000000
+        });
+        $.ajax({
+            type: "POST",
+            url: '//www.json.cn/user/get_show_qrcode',
+            dataType: "json",
+            success: function (json) {
+                layer.close(loading);
+                if (json.code == 1) {
+                    if (json.msg == 'success') {
+                        // if ($('.login-by-code-img-noshow').is(':visible')){
+                        // }
+                        $('.login-by-code-img-noshow').hide();
+                        $('#wcQrCodeImg').attr('src', json.data.code);
+                        notify_url = json.data.notify_url;
+                        $('.refresh-qrcode').show();
+                    }
+                } else {
+                    $('.login-by-code-img-noshow').show();
+                    $('.refresh-qrcode').hide();
+                }
+            },
+            error: function (HttpRequest, ajaxOptions, thrownError) {
+                layer.close(loading);
+                $('.refresh-qrcode').hide();
+                dr_ajax_alert_error(HttpRequest, ajaxOptions, thrownError)
+            }
+        });
+    }
+</script>
+<style>
+    .popup-link-info-box {
+        position: absolute;
+        right: 58px;
+        top: 0;
+        background-color: #fff;
+        -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        display: none;
+    }
+
+    .popup-link-info-box li {
+        float: left;
+        margin-right: 10px;
+        border: 1px solid #eee;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .popup-link-info-box li p {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .popup-link-info-box li p span {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .popup-link-info-box li .popup-wechat-wrapper {
+    }
+
+    .popup-link-info-box li .popup-wechat-wrapper img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+</style>
+
+<link href="./resources/jquery.numberedtextarea.css" rel="stylesheet">
+
+<script src="./resources/jquery.min.js"></script>
+<script src="./resources/zui.min.js"></script>
+<script src="./resources/jquery.cookie.js"></script>
+<script src="./resources/qrcode.min.js"></script>
+<script src="./resources/jquery.message.js"></script>
+<div style="clear:both;"></div>
+<div id="jquery-beauty-msg"></div>
+<script src="./resources/bignumber.min.js"></script>
+<script src="./resources/jquery.json.js"></script>
+<script src="./resources/jquery.xml2json.js"></script>
+<script src="./resources/jquery.json2xml.js"></script>
+<script src="./resources/json2.js"></script>
+<script src="./resources/jsonlint.js"></script>
+<script src="./resources/clipboard.min.js"></script>
+<script src="./resources/FileSaver.min.js"></script>
+<script src="./resources/jquery.numberedtextarea.js"></script>
+<script src="./resources/drag.js"></script>
+<script src="./resources/new-common.js"></script>
+
+
+<script type="text/javascript">
+    if (window.localStorage.getItem('show-version-tip') && window.localStorage.getItem('show-version-tip') === '1') {
+    } else {
+        // $('.old-version').addClass('old-version-tip');
+        // $('.old-version').attr('data-href', $('.old-version').attr('href'));
+        // $('.old-version').attr('href', '');
+        // $('.tip-mask').show()
+    }
+    $('.tip-mask').click(function () {
+        $(this).remove();
+        $('.old-version-tip').removeClass('old-version-tip');
+        $('.old-version').attr('href', $('.old-version').attr('data-href'));
+    });
+    $('.old-version-tip').click(function () {
+        $(this).remove();
+        $('.old-version').attr('href', $('.old-version').attr('data-href'));
+        $('.tip-mask').removeClass('old-version-tip');
+        window.localStorage.setItem('show-version-tip', '1')
+    });
+
+    $('textarea').numberedtextarea();
+    var current_json = '';
+    var current_content = '';
+    var current_json_str = '';
+    var xml_flag = false;
+    var zip_flag = false;
+    var shown_flag = false;
+    var compress_flag = false;
+    $('.tip').tooltip();
+
+    function init() {
+        xml_flag = false;
+        zip_flag = false;
+        shown_flag = false;
+        compress_flag = false;
+        isXml = false;
+        renderLine();
+        $('.xml').attr('style', 'color:#999;');
+        $('.zip').attr('style', 'color:#999;');
+
+    }
+
+    $('#cancelZY').click(function () {
+        init();
+        var content = $.trim($('#json-src').val());
+        var result = '';
+        if (content != '') {
+            //如果是xml,那么转换为json
+            if (content.substr(0, 1) === '<' && content.substr(-1, 1) === '>') {
+                try {
+                    var json_obj = $.xml2json(content);
+                    content = JSON.stringify(json_obj);
+                } catch (e) {
+                    result = '解析错误：<span style="color: #f1592a;font-weight:bold;">' + e.message + '</span>';
+                    current_json_str = result;
+                    $('#json-target').html(result);
+                    return false;
+                }
+
+            }
+            try {
+                var hasZY = $('#cancelZY').prop('checked');
+                if (hasZY) {
+                    content = content.replace(/\\/g, '\\\\');
+                    content = content.replace(/\\"/g, '\\\\"');
+                }
+
+                current_json = jsonlint.parse(content);
+                current_json_str = JSON.stringify(current_json);
+                //current_json = JSON.parse(content);
+                current_content = content;
+                result = new JSONFormat(content, 4).toString();
+            } catch (e) {
+                result = '<span style="color: #f1592a;font-weight:bold;">' + e + '</span>';
+                current_json_str = result;
+            }
+
+            $('#json-target').html(result);
+        } else {
+            $('#json-target').html('');
+        }
+    });
+
+    var isXml = false;
+    $('#json-src').keyup(function () {
+        init();
+        var content = $.trim($(this).val());
+        var result = '';
+        if (content != '') {
+            //如果是xml,那么转换为json
+            if (content.substr(0, 1) === '<' && content.substr(-1, 1) === '>') {
+                isXml = true;
+                try {
+                    var json_obj = $.xml2json(content);
+                    content = JSON.stringify(json_obj);
+                } catch (e) {
+                    result = '解析错误：<span style="color: #f1592a;font-weight:bold;">' + e.message + '</span>';
+                    current_json_str = result;
+                    $('#json-target').html(result);
+                    return false;
+                }
+
+            }
+
+            try {
+                var hasZY = $('#cancelZY').prop('checked');
+                if (hasZY) {
+                    content = content.replace(/\\/g, '\\\\');
+                    content = content.replace(/\\"/g, '\\\\"');
+                }
+
+                current_json = jsonlint.parse(content);
+                current_json_str = JSON.stringify(current_json);
+
+                //current_json = JSON.parse(content);
+                current_content = content;
+                result = new JSONFormat(content, 4).toString();
+            } catch (e) {
+                result = '<span style="color: #f1592a;font-weight:bold;">' + e + '</span>';
+                current_json_str = result;
+            }
+
+            $('#json-target').html(result);
+        } else {
+            $('#json-target').html('');
+        }
+
+    });
+
+    //主入口
+    function getRealJsonData(baseStr) {
+        if (!baseStr || typeof baseStr != 'string') return;
+        var jsonData = null;
+        try {
+            jsonData = JSON.parse(baseStr);
+        } catch (err) {
+            return null;
+        }
+        var needReplaceStrs = [];
+        loopFindArrOrObj(jsonData, needReplaceStrs);
+        needReplaceStrs.forEach(function (replaceInfo) {
+            var matchArr = baseStr.match(eval('/"' + replaceInfo.key + '":[0-9]{15,}/'));
+            if (matchArr) {
+                var str = matchArr[0];
+                var replaceStr = str.replace('"' + replaceInfo.key + '":', '"' + replaceInfo.key + '":"');
+                replaceStr += '"';
+                baseStr = baseStr.replace(str, replaceStr);
+            }
+        });
+        var returnJson = null;
+        returnJson = JSON.parse(baseStr);
+        return returnJson;
+    }
+
+    //遍历对象类型的
+    function getNeedRpStrByObj(obj, needReplaceStrs) {
+        for (var key in obj) {
+            var value = obj[key];
+            if (typeof value == 'number' && value > 9007199254740992) {
+                needReplaceStrs.push({key: key});
+            }
+            loopFindArrOrObj(value, needReplaceStrs);
+        }
+    }
+
+    //遍历数组类型的
+    function getNeedRpStrByArr(arr, needReplaceStrs) {
+        for (var i = 0; i < arr.length; i++) {
+            var value = arr[i];
+            loopFindArrOrObj(value, needReplaceStrs);
+        }
+    }
+
+    //递归遍历
+    function loopFindArrOrObj(value, needRpStrArr) {
+        var valueTypeof = Object.prototype.toString.call(value);
+        if (valueTypeof == '[object Object]') {
+            needRpStrArr.concat(getNeedRpStrByObj(value, needRpStrArr));
+        }
+        if (valueTypeof == '[object Array]') {
+            needRpStrArr.concat(getNeedRpStrByArr(value, needRpStrArr));
+        }
+    }
+
+
+    $('#right-box').keyup(function () {
+
+        var text = $('#json-target').html().replace(/<br\/>/g, "\n").replace(/<br>/g, "\n").replace(/<[^>]+>/g, "").replace(/&nbsp;/ig, " ").replace(/Object{...}/ig, "").replace(/Array\[[0-9]+\]/ig, "");
+        if (!xml_flag) {
+            $('#json-src').val(text);
+            current_content = text;
+        }
+
+    });
+    $('.xml').click(function () {
+        if (xml_flag) {
+            $('#json-src').keyup();
+        } else {
+            var result = $.json2xml(current_content);
+            $('#json-target').html('<textarea style="width:100%;position:absolute;height: 80vh;min-height:480px;border:0;resize:none;">' + result + '</textarea>');
+            xml_flag = true;
+            $(this).attr('style', 'color:#15b374;');
+        }
+
+    });
+    $('.shown').click(function () {
+        if (!shown_flag) {
+            renderLine();
+            $('#line-num').show();
+            console.log($('#line-num'))
+            $('.numberedtextarea-line-numbers').show();
+            shown_flag = true;
+            $(this).attr('style', 'color:#15b374;');
+        } else {
+            $('#line-num').hide();
+            $('.numberedtextarea-line-numbers').hide();
+            shown_flag = false;
+            $(this).attr('style', 'color:#999;');
+        }
+    });
+
+    function renderLine() {
+        var line_num = $('#json-target').height() / 20;
+        $('#line-num').html("");
+        var line_num_html = "";
+        for (var i = 1; i < line_num + 1; i++) {
+            line_num_html += "<div>" + i + "<div>";
+        }
+        $('#line-num').html(line_num_html);
+    }
+
+    $('.zip').click(function () {
+        if (zip_flag) {
+            $('#json-src').keyup();
+        } else {
+            //$('#json-target').html(current_json_str.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+            $('#json-target').html("<xmp>" + current_json_str + "</xmp>");
+            zip_flag = true;
+            $(this).attr('style', 'color:#15b374;');
+        }
+
+    });
+    $('.compress').click(function () {
+        if (!compress_flag) {
+            $(this).attr('style', 'color:#15b374;');
+            //$(this).attr('title','取消折叠').tooltip('fixTitle').tooltip('show');
+            $($(".fa-minus-square-o").toArray().reverse()).click();
+            compress_flag = true;
+        } else {
+            while ($(".fa-plus-square-o").length > 0) {
+                $(".fa-plus-square-o").click();
+            }
+            compress_flag = false;
+            $(this).attr('style', 'color:#555;');
+            $(this).attr('title', '折叠').tooltip('fixTitle').tooltip('show');
+        }
+    });
+    $('.clear').click(function () {
+        $('#json-src').val('');
+        $('#json-target').html('');
+    });
+    $('.share').click(function () {
+        $('#hidden-message-box').hide();
+        $.post("/index.php?is_ajax=1&s=api&app=blog&c=tran&m=add_share", {
+            'type': 'jsononline',
+            'content': $('#json-src').val(),
+        }, function (data) {
+            if (data.code == -1) {
+                $('#lggt').click();
+                layer.msg('请先登录再分享');
+            } else if (data.code == 0) {
+                layer.msg(data.msg);
+            } else if (data.code == 1) {
+                $('#copy_share').html(data.data.sign);
+
+                //询问框
+
+                layer.confirm('<div>' + data.msg + '</div><br/><p style="color: red;">数据将定期清除！</p><br /><div id="copy_share">' + data.data.sign + '</div>' + '<br /><a href="#" class="tip copy_share" title="复制分享" data-clipboard-target="#copy_share" data-placement="bottom"><i\n' +
+                    '                    class="fa fa-copy"></i> 点击复制链接</a>', {
+                    btn: ['关闭'],
+                    title: '复制成功',
+                    success: function (layero, index) {
+                        var clipboard_share = new Clipboard('.copy_share');
+                    },
+                });
+            } else {
+                layer.msg('无法分享，未知错误');
+            }
+        }, 'jsonp');
+        /*
+        try {
+            var jqxhr = $.post("/shares/", {"content": current_json_str}, function (data) {
+                var k = data;
+            })
+                .success(function (data) {
+                    // window.location.href = "share.html?k=" + data;
+                })
+                .error(function (data) {
+                    $('#hidden-message-box').hide();
+                    if (data.status <= 400 && data.status > 200) {
+                        $('#hidden-message').html(data.responseText);
+                    } else if (data.status > 400) {
+                        $('#hidden-message').html("服务器升级中...此功能暂不可用.");
+                    }
+                    $('#hidden-message-box').show();
+                }).done(function (data) {
+                    $('#hidden-message-box').hide();
+                    if (data.responseText != undefined) {
+                        $('#hidden-message').html(data.responseText);
+                    } else {
+                        $('#hidden-message').html("服务器升级中...此功能暂不可用.");
+                    }
+                    $('#hidden-message-box').show();
+                }).complete(function (data) {
+                    $('#hidden-message-box').show();
+                });
+        } catch (e) {
+            $('#hidden-message-box').show();
+        } finally {
+            setTimeout(function () {
+                $('#hidden-message-box').hide();
+            }, 3000);
+        }
+        */
+    });
+
+    //读取share
+    console.log(getPar('share'));
+    if (getPar('share')) {
+        // 如果index.php没有配置不缓存，使用get请求会被缓存，百度云暂时不缓存post请求
+        $.post("/index.php?is_ajax=1&s=api&app=blog&c=tran&m=read_share&sign=" + getPar('share'), function (data) {
+            if (data.code == 1) {
+                $("#json-src").val(data.data.content);
+                $('#cancelZY').click();
+            }
+
+        }, 'jsonp')
+    }
+
+    function getPar(par) {
+        //获取当前URL
+        var local_url = document.location.hash.replace('#', '');
+        //获取要取得的get参数位置
+        var get = local_url.indexOf(par + "=");
+        if (get == -1) {
+            return false;
+        }
+        //截取字符串
+        var get_par = local_url.slice(par.length + get + 1);
+        //判断截取后的字符串是否还有其他get参数
+        var nextPar = get_par.indexOf("&");
+        if (nextPar != -1) {
+            get_par = get_par.slice(0, nextPar);
+        }
+        return get_par;
+    }
+
+
+    $('.fullScreen').click(function () {
+        $('#dragEle').css('left', '');
+        $('main .col-md-7').css('width', '');
+        $('main .col-md-5').css('width', '');
+        $('.editor-con').toggleClass('editor-full-screen');
+        $('body').toggleClass('overflow-hidden');
+        $('.fullScreen .fa').toggleClass('fa-minus fa-arrows-alt');
+        if ($(this).attr('data-original-title') === '全屏') {
+            $(this).attr('data-original-title', '最小化')
+        } else {
+            $(this).attr('data-original-title', '全屏')
+        }
+    });
+    (function ($) {
+        $.fn.innerText = function (msg) {
+            if (msg) {
+                if (document.body.innerText) {
+                    for (var i in this) {
+                        this[i].innerText = msg;
+                    }
+                } else {
+                    for (var i in this) {
+                        this[i].innerHTML.replace(/&amp;lt;br&amp;gt;/gi, "n").replace(/(&amp;lt;([^&amp;gt;]+)&amp;gt;)/gi, "");
+                    }
+                }
+                return this;
+            } else {
+                if (document.body.innerText) {
+                    return this[0].innerText;
+                } else {
+                    return this[0].innerHTML.replace(/&amp;lt;br&amp;gt;/gi, "n").replace(/(&amp;lt;([^&amp;gt;]+)&amp;gt;)/gi, "");
+                }
+            }
+        };
+    })(jQuery);
+    $('.save').click(function () {
+        // var content = JSON.stringify(current_json);
+        // $('#txt-content').val(content);
+        //var text = "hell world";
+        var html = $('#json-target').html().replace(/\n/g, '<br/>').replace(/\n/g, '<br>');
+        var text = $('#json-target').innerText().replace('　　', '    ');
+        var blob = new Blob([text], {type: "application/json;charset=utf-8"});
+        var timestamp = new Date().getTime();
+        saveAs(blob, "format." + timestamp + ".json");
+    });
+    var clipboard = new Clipboard('.copy');
+
+    $('#json-src').keyup();
+
+    //拖拽
+    // var totalWidth = $(window).outerWidth() >= 1200 ? 1200 : $(window).outerWidth();
+    var totalWidth = $(window).outerWidth();
+    // var gapWidth = $(window).outerWidth() > 1200 ? ($(window).outerWidth() - 1200) / 2 : 0;
+    var gapWidth = 0;
+    var forbidenWidth = totalWidth - 400;
+    $('#dragEle').myDrag({
+        parent: 'parent', //定义拖动不能超出的外框,拖动范围
+        randomPosition: false, //初始化随机位置
+        direction: 'x', //方向
+        handler: false, //把手
+        dragStart: function (x, y) {
+            totalWidth = $(window).outerWidth();
+            gapWidth = 0;
+            forbidenWidth = totalWidth - 400;
+        }, //拖动开始 x,y为当前坐标
+        dragEnd: function (x, y) {
+            totalWidth = $(window).outerWidth();
+            gapWidth = 0;
+            forbidenWidth = totalWidth - 400;
+
+            if (x > forbidenWidth) {
+                $('#dragEle').offset({top: 0, left: forbidenWidth - 5 + gapWidth});
+                $('main .col-md-5').width(forbidenWidth);
+                $('main .col-md-7').width(totalWidth - forbidenWidth);
+            } else if (x < 200) {
+                $('#dragEle').offset({top: 0, left: 195 + gapWidth});
+                $('main .col-md-5').width(200);
+                $('main .col-md-7').width(totalWidth - 200);
+            } else {
+                $('main .col-md-5').width(x);
+                $('main .col-md-7').width(totalWidth - x - 1);
+            }
+        }, //拖动停止 x,y为当前坐标
+        dragMove: function (x, y) {
+            if (x > forbidenWidth || x < 200) {
+
+            } else {
+                $('main .col-md-5').width(x);
+                $('main .col-md-7').width(totalWidth - x - 1);
+            }
+        } //拖动进行中 x,y为当前坐标
+    });
+    $(window).resize(function () {
+        $('#dragEle').css('left', '');
+        $('main .col-md-7').css('width', '');
+        $('main .col-md-5').css('width', '');
+    });
+
+    //搜索
+    $('select.chosen-select').on('change', function () {
+
+        window.location.href = $(this).val()
+    });
+    $('body').on('click', '#goTop', function () {
+        $('body,html').animate({
+                scrollTop: 0
+            },
+            500);
+        return false;
+    });
+
+    /*收藏*/
+    $('body').on('click', '.xf-collection', function () {
+        alert('您的浏览器不支持,请按 Ctrl+D 手动收藏!')
+    });
+
+    $('body').on('mouseenter', '.ind-footer-nav-item', function () {
+        $('.ind-footer-nav-item').removeClass('active')
+        $(this).addClass('active');
+        var index = $(this).attr('data-index');
+        $('.ind-footer-nav-show').each(function (i, v) {
+            if ($(this).attr('data-index') == index) {
+                $(this).addClass('active')
+            } else {
+                $(this).removeClass('active');
+            }
+        });
+    });
+
+
+    $('body').on('mouseenter', '.nav-show-one', function () {
+        $('.nav-show-one').removeClass('active');
+        $(this).addClass('active');
+        var itext = $(this).text();
+        var ione = $(this).attr('data-chose');
+        $(this).closest('.ind-footer-nav-show').find('.nav-show-one-sm-s-show').each(function (i, v) {
+            $(v).hide();
+            var index = $(v).attr('data-target');
+            if (ione == index) {
+                $(v).find('.nav-show-one-sm-show-t').text(itext)
+                $(v).show();
+            }
+        });
+    });
+</script>
+</body>
+</html>
