@@ -1251,8 +1251,10 @@
     }
     $('.share').click(function () {
         $('.zip').keyup()
-        let data = window.location.origin+window.location.pathname+'?data='+current_json_str
-        console.log(window.location)
+        let data = window.location.origin+window.location.pathname
+        if(current_json_str && current_json_str.trim()!==''){
+            data = window.location.origin+window.location.pathname+'?data='+current_json_str
+        }
         copyToClipboard(data)
     });
 
