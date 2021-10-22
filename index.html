@@ -14,9 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all">
     <meta name="author" content="https://flyjson.github.io/">
-    <meta content="json,json在线解析,json格式化,json格式验证,json转xml,xml转json,json压缩,json转义,js混淆加密,JSON转实体,json在线,JSON校验,json tools,主机评测,主机测评,新手教程,技术博客,电子工具"
+    <meta content="json,json在线解析,json格式化,json格式验证,json转xml,xml转json,json压缩"
           name="keywords">
-    <meta content="致力于在中国推广Json,并提供相关的Json解析、验证、格式化、压缩、编辑器以及Json与XML相互转换等服务" name="description">
+    <meta content="致力于Json解析、验证、格式化、压缩、编辑器以及Json与XML相互转换等服务" name="description">
     <link href="./resources/zui.min.css" rel="stylesheet">
     <link href="./resources/css/font-awesome.css" rel="stylesheet">
     <link href="./resources/base.css" rel="stylesheet">
@@ -212,21 +212,23 @@
         <div class="tool" style="position:absolute;border-top: 1px solid #eee;border-right: 1px solid #eee">
             <a href="#" class="tip zip" title="" data-placement="bottom" data-original-title="压缩" style="color:#999;"><em
                     class="fa fa-database"></em></a>
-            <a href="#" class="tip xml" title="" data-placement="bottom" data-original-title="转XML" style="color:#999;"><i
-                    class="fa fa-file-excel-o"></i></a>
-            <a href="#" class="tip shown" title="" data-placement="bottom" data-original-title="显示行号"><i
-                    class="fa fa-sort-amount-asc"></i></a>
-            <a href="#" class="tip clear" title="" data-placement="bottom" data-original-title="清空"><i
-                    class="fa fa-trash"></i></a>
-            <a href="#" class="tip save" title="" data-placement="bottom" data-original-title="保存"><i
-                    class="fa fa-download"></i></a>
+            <a href="#" class="tip xml" title="" data-placement="bottom" data-original-title="转XML" style="color:#999;"><em
+                    class="fa fa-file-excel-o"></em></a>
+            <a href="#" class="tip shown" title="" data-placement="bottom" data-original-title="显示行号"><em
+                    class="fa fa-sort-amount-asc"></em></a>
+            <a href="#" class="tip clear" title="" data-placement="bottom" data-original-title="清空"><em
+                    class="fa fa-trash"></em></a>
+            <a href="#" class="tip save" title="" data-placement="bottom" data-original-title="保存"><em
+                    class="fa fa-download"></em></a>
             <a href="#" class="tip copy" title="" data-clipboard-target="#json-target" data-placement="bottom"
                data-original-title="复制"><i class="fa fa-copy"></i></a>
+            <a href="#" class="tip share" title="" data-placement="bottom" data-original-title="复制分享">
+                <i class="fa fa-share"></i></a>
 
-            <a href="#" class="tip compress" title="" data-placement="bottom" data-original-title="折叠"><i
-                    class="fa fa-compress"></i></a>
-            <a href="#" class="tip fullScreen" title="" data-placement="bottom" data-original-title="全屏"><i
-                    class="fa fa-arrows-alt"></i></a>
+            <a href="#" class="tip compress" title="" data-placement="bottom" data-original-title="折叠"><em
+                    class="fa fa-compress"></em></a>
+            <a href="#" class="tip fullScreen" title="" data-placement="bottom" data-original-title="全屏"><em
+                    class="fa fa-arrows-alt"></em></a>
             <label style="cursor: pointer">
                 <input type="checkbox" checked="checked" name="cancelZY" id="cancelZY"
                        style="margin-top: 0;position: relative;top: 2px">
@@ -337,87 +339,7 @@
             scrollbar: true,
             area: ['750px', '480px'],
             // area: '750px',
-            content: `
-
-                 <div class="login-reg-box-wrapper tc-cover">
-
-                <div class="fc-register portlet-title tabbable-line">
-                     <a class="return-to-log left-icon-self" id="regToLog">
-                    返回登录</a>
-                     注册用户
-                </div>
-                <div class="portlet light">
-
-            <div class="portlet-body">
-            <form action="" class="form-horizontal form myRegForm" method="post" name="myregform" id="myform">
-            <input name="is_form" type="hidden" value="1">
-            <input name="is_admin" type="hidden" value="0">
-            <input name="is_tips" type="hidden" value="">
-            <input name="csrf_test_name" type="hidden" value="6c3cec23237c6cf063228b64a78a6760">
-            <input name="back" id="dr_back" type="hidden" value="">
-            <div class="form-body" style="padding-bottom:0">
-
-            <div class="form-group " id="dr_row_phone">
-            <label class="col-md-2 control-label">手机号</label>
-            <div class="col-md-9">
-            <input type="text" class="form-control input-large" placeholder="请输入手机号" name="data[phone]" id="dr_phone">
-            </div>
-            </div>
-            <div class="form-group " id="dr_row_password">
-            <label class="col-md-2 control-label">密码</label>
-            <div class="col-md-9">
-            <input type="password" class="form-control input-large" name="data[password]" placeholder="数字+字母不少于8位" id="dr_password">
-            </div>
-            </div>
-            <div class="form-group " id="dr_row_password2">
-            <label class="col-md-2 control-label">确认密码</label>
-            <div class="col-md-9">
-            <input type="password" class="form-control input-large" name="data[password2]" placeholder="再次输入密码" id="dr_password2">
-            </div>
-            </div>
-            <div class="form-group" id="dr_row_code">
-            <label class="col-md-2 control-label">验证码</label>
-            <div class="col-md-9 input-ver-code" style="padding-left: 10px;padding-right: 0;">
-            <input class="form-control placeholder-no-fix input-ver" type="text" autocomplete="off" id="dr_code" name="code" placeholder="验证码">
-            <div class="input-group-btn fc-code">
-            <img align="absmiddle" style="cursor:pointer;" onclick="this.src='/index.php?s=api&c=api&m=captcha&width=120&height=35&'+Math.random();"
-            src="/index.php?s=api&c=api&m=captcha&width=120&height=35">
-            </div>
-            </div>
-            </div>
-            <div class="form-group" id="dr_row_sms">
-            <label class="col-md-2 sms-ver-tit control-label">短信验证</label>
-            <div class="sms-ver-show col-md-9" style="padding-left: 10px;padding-right: 0;">
-            <input class="form-control placeholder-no-fix sms-veri" onkeydown="regLogFindSubmit(this)" type="text" autocomplete="off" id="dr_sms" name="sms" placeholder="手机验证码">
-            <button id="activeCode" class="empty-btn reg-btn reg-active-code-box" onclick="dr_ajax_url_login('/index.php?s=member&c=api&m=register_code&id='+$('#dr_phone').val()+'&code='+$('#dr_code').val())"
-            type="button">获取手机验证码
-            </button>
-
-            </div>
-            </div>
-            <div class="reg-agree ">
-            <label class="mt-checkbox mt-checkbox-outline">
-            <input type="checkbox" name="is_protocol" id="dr_protocol" value="1" checked=""> 我已阅读并同意
-            <span></span>
-            </label>
-            <label class="mt-checkbox-more">
-            <a href="javascript:dr_show_protocol();">《用户注册协议》</a>
-            </label>
-            </div>
-            <div class="form-actions">
-            <label class="member-reg-btn-label">
-            <button type="button" id="regInBtn" class="btn red" onclick="dr_ajax_member_reg('/index.php?s=member&c=register&m=index','myform')"> 立即注册
-
-            </button>
-            </label>
-            </div>
-            </div>
-            </form>
-
-            </div>
-            </div>
-            </div>
-            `
+            content: ''
         })
     }
     logTc = function () {
@@ -435,82 +357,7 @@
                 }
             },
             area: '750px',
-            content: `
-                        <div class="login-log-box-wrapper account-login-method portlet-wrapper">
-    <div class="portlet light">
-        <div class="portlet-body ">
-            <div class="row">
-                <div class="col-img-wrapper">
-                    <img src="" alt="">
-                </div>
-                <div class="col-info-wrapper">
-                    <div class="login-chose-tit">
-                        <div class="login-title active">微信登录</div>
-                        <div class="login-title">账号登录</div>
-                    </div>
-
-                    <div id="loginStepTwo" class="col-md-4 " >
-                        <div class="login-by-code">
-                            <div class="login-by-code-img">
-                               <div class="login-by-code-img">
-                                <img id="wcQrCodeImg" src="" alt="">
-
-                                    <div class="login-by-code-img-noshow">
-                                        <p>二维码失效</p>
-                                        <p>请点击刷新</p>
-                                        <a id="reloadQrcode" onclick="refreshQrcode()" >刷新二维码</a>
-                                    </div>
-                                </div>
-                            </div>
-                             <a class="refresh-qrcode" onclick="refreshQrcode()">点击刷新</a>
-                            <p class="">请使用微信扫描二维码登录注册</p>
-                        </div>
-                    </div>
-                    <div id="loginStepOne" class="col-md-4 display-none">
-                        <form class="content" id="myform" name="mylogform" method="post" novalidate="novalidate">
-
-
-                            <input name="is_form" type="hidden" value="1">
-<input name="is_admin" type="hidden" value="0">
-<input name="is_tips" type="hidden" value="">
-<input name="csrf_test_name" type="hidden" value="e61cf3d516c228e64a9afb533342635f">
-<input name="back" id="dr_back" type="hidden" value="/index.php?s=member">
-                            <div class="form-group" style="margin-top: 20px;">
-                                <div class="input-icon">
-                                     <input class="form-control placeholder-no-fix login-tel" type="text" autocomplete="off" id="logUsername" placeholder="请输入用户名\\手机号" name="data[username]">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-icon">
-                                     <input class="form-control placeholder-no-fix login-pw" type="password" autocomplete="off" id="logPassword" placeholder="请输入密码" name="data[password]">
-                                </div>
-                            </div>
-
-                                                        <div class="form-group">
-                                <div class="input-group " style="width: 100%">
-                                    <div class="input-icon" style="width:calc(100% - 15px)">
-                                         <input onkeydown="regLogFindSubmit(this)" class="form-control placeholder-no-fix veri-code" type="text" autocomplete="off" id="logCode" placeholder="请输入验证码" name="code">
-                                    </div>
-                                    <div class="input-group-btn fc-code" style="width: 120px;border: 1px solid #ddd">
-                                        <img align="absmiddle" style="cursor:pointer;" onclick="this.src='/index.php?s=api&amp;c=api&amp;m=captcha&amp;width=120&amp;height=35&amp;'+Math.random();" src="/index.php?s=api&amp;c=api&amp;m=captcha&amp;width=120&amp;height=35">                                    </div>
-                                </div>
-                            </div>
-                                         <div class="create-account create-account-one" style="margin: 0;display: flex;justify-content: space-between">
-                                <p>
-                                    <a  class="reg-account"> 注册账号 </a>
-                                    <a class="find-password-btn" id="findPw"> 找回密码 </a>
-                                </p>
-                            </div>
-                            
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-                       `
+            content: ''
         })
     }
     findTc = function () {
@@ -523,66 +370,22 @@
             scrollbar: true,
             // area:['750px','auto'],
             area: ['750px', '480px'],
-            content: `
-                         <div class="portlet-wrapper">
-    <div class="portlet light find-pw-cla">
-        <div class="portlet-body ">
-            <div class="row">
-                <div class="find-pw-tit">
-                     <a class="find-to-log left-icon-self" id="returnToLogin">返回登录</a>
-                    找回密码
-</div>
-                <div class="portlet-body form" style="">
-                    <form id="myform" name="myfindform" class="form-horizontal" role="form">
-                        <input name="is_form" type="hidden" value="1">
-<input name="is_admin" type="hidden" value="0">
-<input name="is_tips" type="hidden" value="">
-<input name="csrf_test_name" type="hidden" value="623f272b236490d99c136438587e15a2">
-                        <div class="form-body">
-                            <div class="form-group" id="dr_row_value">
-                                <label class="col-md-4 control-label">手机号</label>
-                                <div class="col-md-5">
-                                    <label><input type="text" class="form-control input-large" id="dr_value" name="data[value]" placeholder="输入手机号"></label>
-                                </div>
-                            </div>
-                            <div class="form-group" id="dr_row_password">
-                                <label class="col-md-4 control-label">新密码</label>
-                                <div class="col-md-5">
-                                    <label><input type="password" class="form-control input-large" id="dr_password_find" name="data[password]" placeholder="输入新的密码"></label>
-                                </div>
-                            </div>
-                            <div class="form-group" id="dr_row_password2">
-                                <label class="col-md-4 control-label">确认密码</label>
-                                <div class="col-md-5">
-                                    <label><input type="password" class="form-control input-large" id="dr_password_find2" name="data[password2]" placeholder="再次输入新的密码"></label>
-                                </div>
-                            </div>
-                            <div class="form-group" id="dr_row_code">
-                                <label class="col-md-4 control-label">图片验证码</label>
-                                <div class="col-md-5">
-                                    <div class="input-group input-large">
-                                        <input class="form-control placeholder-no-fix  find-veri-code" type="text" autocomplete="off" id="dr_code_find" placeholder="图片验证码">
-                                        <div class="input-group-btn fc-code">
-                                            <img align="absmiddle" style="cursor:pointer;" onclick="this.src='/index.php?s=api&amp;c=api&amp;m=captcha&amp;width=120&amp;height=35&amp;'+Math.random();" src="/index.php?s=api&amp;c=api&amp;m=captcha&amp;width=120&amp;height=35">                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-                       `
-        })
+            content: ''        })
     }
 
     window.onload = function () {
 
-
+        let url = decodeURI(window.location.href)
+        let tag = '?data='
+        let dataInit = false
+        if(url.indexOf(tag)>0){
+            let params = url.substring(url.indexOf(tag)+tag.length)
+            if(params.lastIndexOf('#')===params.length-1){
+                params = params.substring(0,params.length-1)
+            }
+            $('#json-src').val(params)
+            dataInit = true
+        }
         /*reg*/
         $('body').on('click', '#lgrt', function () {
             regTc()
@@ -641,6 +444,11 @@
             $('.login-title').removeClass('active')
             $('.login-title').eq(1).addClass('active')
         })
+
+        if(dataInit){
+            $('#json-src').keyup()
+            // window.location.href = url.substring(0,url.indexOf(tag))
+        }
     }
 
     function regLogFindSubmit(iv) {
@@ -1427,69 +1235,25 @@
         $('#json-src').val('');
         $('#json-target').html('');
     });
-    $('.share').click(function () {
-        $('#hidden-message-box').hide();
-        $.post("/index.php?is_ajax=1&s=api&app=blog&c=tran&m=add_share", {
-            'type': 'jsononline',
-            'content': $('#json-src').val(),
-        }, function (data) {
-            if (data.code == -1) {
-                $('#lggt').click();
-                layer.msg('请先登录再分享');
-            } else if (data.code == 0) {
-                layer.msg(data.msg);
-            } else if (data.code == 1) {
-                $('#copy_share').html(data.data.sign);
-
-                //询问框
-
-                layer.confirm('<div>' + data.msg + '</div><br/><p style="color: red;">数据将定期清除！</p><br /><div id="copy_share">' + data.data.sign + '</div>' + '<br /><a href="#" class="tip copy_share" title="复制分享" data-clipboard-target="#copy_share" data-placement="bottom"><i\n' +
-                    '                    class="fa fa-copy"></i> 点击复制链接</a>', {
-                    btn: ['关闭'],
-                    title: '复制成功',
-                    success: function (layero, index) {
-                        var clipboard_share = new Clipboard('.copy_share');
-                    },
-                });
-            } else {
-                layer.msg('无法分享，未知错误');
-            }
-        }, 'jsonp');
-        /*
-        try {
-            var jqxhr = $.post("/shares/", {"content": current_json_str}, function (data) {
-                var k = data;
-            })
-                .success(function (data) {
-                    // window.location.href = "share.html?k=" + data;
-                })
-                .error(function (data) {
-                    $('#hidden-message-box').hide();
-                    if (data.status <= 400 && data.status > 200) {
-                        $('#hidden-message').html(data.responseText);
-                    } else if (data.status > 400) {
-                        $('#hidden-message').html("服务器升级中...此功能暂不可用.");
-                    }
-                    $('#hidden-message-box').show();
-                }).done(function (data) {
-                    $('#hidden-message-box').hide();
-                    if (data.responseText != undefined) {
-                        $('#hidden-message').html(data.responseText);
-                    } else {
-                        $('#hidden-message').html("服务器升级中...此功能暂不可用.");
-                    }
-                    $('#hidden-message-box').show();
-                }).complete(function (data) {
-                    $('#hidden-message-box').show();
-                });
-        } catch (e) {
-            $('#hidden-message-box').show();
-        } finally {
-            setTimeout(function () {
-                $('#hidden-message-box').hide();
-            }, 3000);
+    function copyToClipboard(s){
+        if(window.clipboardData){
+            window.clipboardData.setData('text',s);
+        }else{
+            (function(s){
+                document.oncopy=function(e){
+                    e.clipboardData.setData('text',s);
+                    e.preventDefault();
+                    document.oncopy=null;
+                }
+            })(s);
+            document.execCommand('Copy');
         }
-        */
+    }
+    $('.share').click(function () {
+        $('.zip').keyup()
+        let data = window.location.origin+window.location.pathname+'?data='+current_json_str
+        console.log(window.location)
+        copyToClipboard(data)
     });
 
     //读取share
