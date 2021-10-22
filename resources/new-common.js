@@ -21,41 +21,6 @@ function loginCookie(avatar, username) {
 * @returns {void}
 */
 function dr_loginout(msg) {
-    $.ajax({
-        type: "post", dataType: "json", data: {}, timeout: 30000, url: "/index.php?s=api&c=api&m=loginout",
-        success: function (json) {
-            var oss_url = json.data.sso;
-            // 发送同步登录信息
-            for (var i = 0; i < oss_url.length; i++) {
-                $.ajax({
-                    type: "GET",
-                    url: oss_url[i],
-                    dataType: "jsonp",
-                    success: function (json) {
-                    },
-                    error: function () {
-                    }
-                });
-            }
-            if (json.code == 1) {
-                $('#login_no').show();
-                $('#login_yes').hide();
-
-                $.cookie('json-login-status',null, {path: '/'});
-
-                $.cookie('json-login-avatar',null, {path: '/'});
-
-                $.cookie('json-login-username',null, {path: '/'});
-
-            } else {
-                layer.msg('登入发生一点小意外。。。')
-            }
-
-        },
-        error: function (HttpRequest, ajaxOptions, thrownError) {
-            dr_ajax_alert_error(HttpRequest, ajaxOptions, thrownError)
-        }
-    });
 }
 
 /*弹窗 登录*/
@@ -71,17 +36,6 @@ $(function () {
         $('#login_yes').show().find('.user-name').text(username);
     }
 
-    /*用以 登陆后，未退出,隔天，后端状态过期，前端状态未过期*/
-    $.post('/index.php?s=api&app=blog&c=tran&m=get_user_status', {}, function (data) {
-        if (data.code == 0) {
-            $.cookie('json-login-status', null, {path: '/'});
-            $.cookie('json-login-avatar', null, {expires: 1, path: '/'}); //exprires 过期时间 path ;域名路径下都可获取
-            $.cookie('json-login-username', null, {expires: 1, path: '/'});
-            $('#login_no').show();
-            $('#login_yes').hide();
-            return false;
-        }
-    }, 'json');
 })
 function dr_ajax_url_login(url) {
     // alert('1')
@@ -249,24 +203,6 @@ function dr_cmf_tips(code, msg, time) {
     dr_tips(code, msg, time);
 }
 
-/*判断用户是否登录*/
-// $.post('/index.php?s=api&app=blog&c=tran&m=get_user_status', {}, function (data) {
-//     // console.log(data)
-//     if (data.code == 1) {
-//         var avatar = data.avatar ? data.avatar : '/static/img/head portrait-01.png';
-//         var username = data.username ? data.username : '用户名';
-//         $.cookie('json-login-status', '1', { path: '/'});
-//         $.cookie('json-login-avatar', avatar, { path: '/'}); //exprires 过期时间 path ;域名路径下都可获取
-//         $.cookie('json-login-username', username, { path: '/'});
-//         $('#login_no').hide();
-//         $('#login_yes').show().find('.img-box').find('img').attr('src', avatar);
-//         $('#login_yes').show().find('.user-name').text(username);
-//     } else {
-//         $.cookie('json-login-status',null, {path: '/'});
-//         $.cookie('json-login-avatar',null, {path: '/'});
-//         $.cookie('json-login-username',null, {path: '/'});
-//     }
-// }, 'json');
 
 
 /*搜索*/
@@ -391,9 +327,9 @@ function loadJsCss(filename, filetype) {
     }
 }
 
-loadJsCss("/static/202010/js/layer.js", "js") //打开页面时浏览器动态的加载js文件
-loadJsCss("/static/202010/js/theme/default/layer.css", "css") //打开页面时浏览器动态的加载css 文件
-loadJsCss("/static/202010/js/lang.js", "js")
+loadJsCss("./resources/layer.js", "js") //打开页面时浏览器动态的加载js文件
+loadJsCss("./resources/layer.css", "css") //打开页面时浏览器动态的加载css 文件
+loadJsCss("./resources/lang.js", "js")
 
 /*判断密码大于8位*/
 function checkPwRule(el) {

@@ -18,7 +18,7 @@
           name="keywords">
     <meta content="致力于在中国推广Json,并提供相关的Json解析、验证、格式化、压缩、编辑器以及Json与XML相互转换等服务" name="description">
     <link href="./resources/zui.min.css" rel="stylesheet">
-    <link href="./resources/font-awesome.min.css" rel="stylesheet">
+    <link href="./resources/css/font-awesome.css" rel="stylesheet">
     <link href="./resources/base.css" rel="stylesheet">
     <link href="./resources/new-style.css" rel="stylesheet">
     <link href="./resources/new-style2.css" rel="stylesheet">
@@ -209,8 +209,8 @@
     <div id="dragEle" style="position: absolute; cursor: move;"></div>
     <div class="col-md-7 col-xs-7" style="padding: 0px; position: relative; height: 100%;">
         <div class="tool" style="position:absolute;border-top: 1px solid #eee;border-right: 1px solid #eee">
-            <a href="#" class="tip zip" title="" data-placement="bottom" data-original-title="压缩" style="color:#999;"><i
-                    class="fa fa-database"></i></a>
+            <a href="#" class="tip zip" title="" data-placement="bottom" data-original-title="压缩" style="color:#999;"><em
+                    class="fa fa-database"></em></a>
             <a href="#" class="tip xml" title="" data-placement="bottom" data-original-title="转XML" style="color:#999;"><i
                     class="fa fa-file-excel-o"></i></a>
             <a href="#" class="tip shown" title="" data-placement="bottom" data-original-title="显示行号"><i
@@ -312,7 +312,7 @@
         var _hmt = _hmt || [];
         (function () {
             var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?1d6c34c1bc067f5746a5fca18d1c24ab";
+            hm.src = "https://hm.baidu.com/hm.js?ceff755fa682e233a77434fd21afac23";
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
@@ -851,67 +851,6 @@
         };
 
 
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: url,
-            // data: $("#"+form).serialize(),
-            data: logData,
-            success: function (json) {
-                layer.close(loading);
-                if (json.code == 1) {
-                    var oss_url = json.data.sso;
-                    // 发送同步登录信息
-                    for (var i = 0; i < oss_url.length; i++) {
-                        //alert(oss_url[i]);
-                        $.ajax({
-                            type: "GET",
-                            url: oss_url[i],
-                            dataType: "jsonp",
-                            success: function (json) {
-                            },
-                            error: function (HttpRequest, ajaxOptions, thrownError) {
-                            }
-                        });
-                    }
-                    layer.closeAll();
-                    layer.msg('登录成功');
-                    loginCookie(json.data.member.avatar, json.data.member.name ? json.data.member.name : json.data.member.phone)
-                } else {
-                    dr_cmf_tips(0, json.msg, json.data.time);
-                    $('.fc-code img').click();
-                    if (json.data.field) {
-                        $('#dr_row_' + json.data.field).addClass('has-error');
-                        $('#dr_' + json.data.field).focus();
-                    }
-                }
-            },
-            error: function (HttpRequest, ajaxOptions, thrownError) {
-
-                /*出现系统错误，可能是已登录，判断是否已登录 */
-                $.post('/index.php?s=api&app=blog&c=tran&m=get_user_status', {}, function (data) {
-                    if (data.code == 1) {
-                        var avatar = data.avatar ? data.avatar : '/static/img/avatar.png';
-                        var username = data.username ? data.username : '用户名';
-                        $.cookie('json-login-status', '1', {expires: 1, path: '/'});
-                        $.cookie('json-login-avatar', avatar, {expires: 1, path: '/'}); //exprires 过期时间 path ;域名路径下都可获取
-                        $.cookie('json-login-username', username, {expires: 1, path: '/'});
-                        $('#login_no').hide();
-                        $('#login_yes').show().find('.img-box').find('img').attr('src', avatar);
-                        $('#login_yes').show().find('.user-name').text(username);
-                        layer.closeAll();
-                        return false;
-                    } else {
-                        $.cookie('json-login-status', null, {path: '/'});
-                        $.cookie('json-login-avatar', null, {path: '/'});
-                        $.cookie('json-login-username', null, {path: '/'});
-                        layer.msg('错误');
-                    }
-                }, 'json');
-
-                // dr_ajax_alert_error(HttpRequest, ajaxOptions, thrownError)
-            }
-        });
     }
 
     function dr_ajax_url_find(url) {

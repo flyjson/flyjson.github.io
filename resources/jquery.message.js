@@ -1,6 +1,6 @@
 /*!
  * jQuery Message Plugin (with Transition Definitions)
- * Examples and documentation at: http://json.cn/
+ * Examples and documentation at: http://flyjson.github.io/
  * Copyright (c) 2012-2017  Paul.Ren.
  * Version: 1.0.2 (19-OCT-2017)
  * Dual licensed under the MIT and GPL licenses.
